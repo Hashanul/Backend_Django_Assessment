@@ -29,6 +29,9 @@ git clone <repository-url>
 
 4. Run migrations:
 # cd employee_management
+
+- pip install mysqlclient #for connected to Database mySQL
+
 - python manage.py makemigrations
 - python manage.py migrate
 

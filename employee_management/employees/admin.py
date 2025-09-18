@@ -21,7 +21,7 @@ class EmployeeAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'phone', 'department')
     list_filter = ('department',)
     search_fields = ('name', 'email')
-    filter_horizontal = ('achievements',)
+        # filter_horizontal removed for 'achievements' due to custom through model
 
 @admin.register(AchievementEmployee)
 class AchievementEmployeeAdmin(admin.ModelAdmin):

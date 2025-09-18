@@ -1,9 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from .models import Employee, Department, Achievement
 from .forms import CustomUserCreationForm, EmployeeForm
+
+# Custom logout view to allow GET requests
+@csrf_exempt
+def user_logout(request):
+    if request.method in ["POST", "GET"]:
+        logout(request)
+        return redirect('login')
+    return redirect('employee_list')
 
 def register(request):
     if request.method == 'POST':
